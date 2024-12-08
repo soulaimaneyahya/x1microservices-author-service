@@ -1,7 +1,7 @@
 {
-    "name": "laravel/lumen",
-    "description": "The Laravel Lumen Framework.",
-    "keywords": ["framework", "laravel", "lumen"],
+    "name": "x1microservices/author-service",
+    "description": "x1microservices/author-service",
+    "keywords": ["x1microservices/author-service"],
     "license": "MIT",
     "type": "project",
     "require": {

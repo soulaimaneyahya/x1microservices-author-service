@@ -1,8 +1,13 @@
 <?php
 
+/**
+ * Author: Soulaimane Yahya
+ * Date: 2024-12-07
+ */
+
 namespace App\Traits;
 
-use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 trait ApiResponser
