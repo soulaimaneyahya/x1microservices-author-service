@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "bf0be18b-24ac-4b78-91fb-0c9144fd0a8c",
+		"name": "author-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17284909"
+	},
+	"item": [
+		{
+			"name": "authors-list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}:8001/authors",
+					"host": [
+						"{{url}}"
+					],
+					"port": "8001",
+					"path": [
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authors-show",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}:8001/authors/{{authorId}}",
+					"host": [
+						"{{url}}"
+					],
+					"port": "8001",
+					"path": [
+						"authors",
+						"{{authorId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

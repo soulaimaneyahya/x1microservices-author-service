@@ -23,4 +23,8 @@ class Author extends Model
         'email',
         'country',
     ];
+
+    protected $hidden = [
+        'deleted_at',
+    ];
 }

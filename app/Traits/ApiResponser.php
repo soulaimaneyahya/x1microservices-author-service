@@ -7,6 +7,8 @@
 
 namespace App\Traits;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -14,12 +16,14 @@ trait ApiResponser
 {
     /**
      * Build success response
-     * @param  string|array $data
+     * @param  string|array|Model|Collection $data
      * @param  int $code
      * @return JsonResponse
      */
-    public function successResponse(string|array $data, int $code = Response::HTTP_OK): JsonResponse
-    {
+    public function successResponse(
+        string|array|Model|Collection $data,
+        int $code = Response::HTTP_OK
+    ): JsonResponse {
         return new JsonResponse(['data' => $data], $code);
     }
 
