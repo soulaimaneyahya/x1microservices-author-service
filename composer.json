@@ -1,7 +1,10 @@
 {
     "name": "x1microservices/author-service",
     "description": "x1microservices/author-service",
-    "keywords": ["x1microservices/author-service"],
+    "keywords": [
+        "x1microservices",
+        "author-service"
+    ],
     "license": "MIT",
     "type": "project",
     "require": {
@@ -11,7 +14,8 @@
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.4",
-        "phpunit/phpunit": "^10.0"
+        "phpunit/phpunit": "^10.0",
+        "squizlabs/php_codesniffer": "^3.7"
     },
     "autoload": {
         "psr-4": {
@@ -28,6 +32,9 @@
     "scripts": {
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "php-fixer": [
+            "./vendor/bin/phpcs app --standard=PSR2"
         ]
     },
     "config": {
