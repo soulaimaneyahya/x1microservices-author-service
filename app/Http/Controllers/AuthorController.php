@@ -17,14 +17,7 @@ class AuthorController extends Controller
         return $this->successResponse($authors);
     }
 
-    public function show(string $authorId): JsonResponse
-    {
-        $author = Author::findOrFail($authorId);
-
-        return $this->successResponse($author);
-    }
-
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $rules = [
             'name' => 'required|max:255',
@@ -34,14 +27,21 @@ class AuthorController extends Controller
 
         $this->validate($request, $rules);
 
-        $author = Author::create($request->validated());
+        $author = Author::create($request->only(array_keys($rules)));
 
         return $this->successResponse($author, Response::HTTP_CREATED);
     }
 
-    public function update(Request $request, $author)
+    public function show(string $authorId): JsonResponse
     {
-        $author = Author::findOrFail($author);
+        $author = Author::findOrFail($authorId);
+
+        return $this->successResponse($author);
+    }
+
+    public function update(Request $request, $authorId): JsonResponse
+    {
+        $author = Author::findOrFail($authorId);
 
         $rules = [
             'name' => 'max:255',
@@ -51,7 +51,7 @@ class AuthorController extends Controller
 
         $this->validate($request, $rules);
 
-        $author->fill($request->validated());
+        $author->fill($request->only(array_keys($rules)));
 
         if ($author->isClean()) {
             return $this->errorResponse(
@@ -65,14 +65,16 @@ class AuthorController extends Controller
         return $this->successResponse($author);
     }
 
-    public function destroy($author)
+    public function destroy($authorId): JsonResponse
     {
-        $author = Author::findOrFail($author);
+        $author = Author::findOrFail($authorId);
 
         if ($author instanceof Author) {
             $author->delete();
         }
 
-        return $this->successResponse($author);
+        return $this->successResponse([
+            'message' => 'Author deleted'
+        ], Response::HTTP_NO_CONTENT);
     }
 }
